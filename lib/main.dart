@@ -19,10 +19,10 @@ class MyApp extends StatelessWidget {
       body: Center(
         child: Container(
             margin: const EdgeInsets.fromLTRB(0, 40, 0, 30),
-            height: 300,
+            height: 350,
             // child: Card(
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
                   child: SizedBox(
@@ -68,6 +68,9 @@ const description =
           padding: EdgeInsets.all(10),
           child: Text(
             'Pavlova is a meringue-based dessert named after the Russian ballerina Anna Pavlova. Pavlova features a crisp crust and soft, light inside, topped with fruit and whipped cream.',
+            style: TextStyle(
+              fontSize: 18,
+            ),
             overflow: TextOverflow.fade,
             textAlign: TextAlign.center,
           ));
@@ -130,12 +133,21 @@ final leftColumn = Container(
   child: Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: <Widget>[
-      Container(color: bgColor, child: titleText),
-      Container(color: bgColor, child: description),
-      Container(color: bgColor, child: reviews),
-      Container(color: bgColor, child: iconList)
+      Container(decoration: boxDecorationFormat, child: titleText),
+      Container(decoration: boxDecorationFormat, child: description),
+      Container(decoration: boxDecorationFormat, child: reviews),
+      Container(decoration: boxDecorationFormat, child: iconList)
     ],
   ),
 );
 
 const bgColor = Colors.blueGrey;
+
+final boxDecorationFormat =  BoxDecoration(
+    color: bgColor, 
+    border: Border.all(
+      color: Colors.black, // Color del borde
+      width: 2.0, // Ancho del borde
+    ),
+    // borderRadius: BorderRadius.circular(10.0), // Esquinas redondeadas opcional
+  );
