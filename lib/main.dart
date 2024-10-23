@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
+        home: Scaffold(
       appBar: AppBar(
         title: const Text('Strawberry Pavlova app'),
         backgroundColor: Colors.blueGrey,
@@ -19,44 +19,58 @@ class MyApp extends StatelessWidget {
       body: Center(
         child: Container(
             margin: const EdgeInsets.fromLTRB(0, 40, 0, 30),
-            height: 350,
+            height: 300,
             // child: Card(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: SizedBox(
-                      width: 300,
-                      child: leftColumn,
-                    ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: SizedBox(
+                    width: 300,
+                    child: leftColumn,
                   ),
-                  const Expanded(
-                    flex: 1,
-                    child: Image(
-                      image: AssetImage('assets/images/strawberry_pavlova.jpg'),
-                      fit: BoxFit.fill,
-                    ),
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: Image(
+                    image: AssetImage('assets/images/strawberry_pavlova.jpg'),
+                    fit: BoxFit.fill,
                   ),
-                ],
-              )
+                ),
+              ],
+            )
             // )
-          ),
+            ),
       ),
     ));
   }
 }
 
-const titleText = Text(
-  'Strawberry Pavlova',
-  overflow: TextOverflow.fade,
-  textAlign: TextAlign.justify,
-);
+const titleText = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Padding(
+          padding: EdgeInsets.all(5),
+          child: Text(
+            'Strawberry Pavlova',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+          )),
+    ]);
 
-const description = Text(
-  'Pavlova is a meringue-based dessert named after the Russian ballerina Anna Pavlova. Pavlova features a crisp crust and soft, light inside, topped with fruit and whipped cream.',
-  overflow: TextOverflow.fade,
-  textAlign: TextAlign.center,
-);
+const description = 
+      Padding(
+          padding: EdgeInsets.all(10),
+          child: Text(
+            'Pavlova is a meringue-based dessert named after the Russian ballerina Anna Pavlova. Pavlova features a crisp crust and soft, light inside, topped with fruit and whipped cream.',
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.center,
+          ));
 
 const stars = Row(
   mainAxisSize: MainAxisSize.min,
@@ -116,10 +130,12 @@ final leftColumn = Container(
   child: Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: <Widget>[
-      Container(color: Colors.blueGrey, child: titleText),
-      Container(color: Colors.blueGrey, child: description),
-      Container(color: Colors.blueGrey, child: reviews),
-      Container(color: Colors.blueGrey, child: iconList)
+      Container(color: bgColor, child: titleText),
+      Container(color: bgColor, child: description),
+      Container(color: bgColor, child: reviews),
+      Container(color: bgColor, child: iconList)
     ],
   ),
 );
+
+const bgColor = Colors.blueGrey;
